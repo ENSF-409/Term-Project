@@ -11,6 +11,15 @@ public class DBManager implements Constants {
 		courseList = new ArrayList<Course>();
 		studentList = new ArrayList<Student>();
 	}
+	
+	public addCourse(Course theCourse){ // add new courses to the database
+		courseList.add(theCourse)
+	}
+	
+	public addStudent(Student theStudent){ // Add new students to the database
+		studentList.add(theStudent)
+	}
+		
 
 	public ArrayList readFromDataBase() {
 		courseList.add(new Course ("ENGG", 233));
@@ -35,7 +44,7 @@ public class DBManager implements Constants {
 		studentList.add("Prince", 145);
 		studentList.add("Helen", 943);
 		
-		for (Course i: courseList) {
+		for (Course i: courseList) {// All this code below should be determined by the administator
 			for (int j = 1; j <= NUMSECTIONS; j++) {
 				i.addOffering(new CourseOffering(i, j, CAPACITY));
 			}
