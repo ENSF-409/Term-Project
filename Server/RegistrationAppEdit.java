@@ -26,9 +26,9 @@ public class RegistrationApp {
 
 	public void removeStudentCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
 		if (this.catCourse.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum))
-			System.out.println("Student course removed!\n");
+			return "Student course removed!\n";
 		else
-			System.out.println("Student course could not be removed. Please try again.\n");
+			return "Student course could not be removed. Please try again.\n";
 	}
 
 	public String listAllCourses() {
