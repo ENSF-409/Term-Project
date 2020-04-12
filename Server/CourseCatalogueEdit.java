@@ -4,8 +4,8 @@ public class CourseCatalogue implements Constants{
 	
 	private ArrayList <Course> courseList;
 	
-	public CourseCatalogue () {
-		loadFromDataBase();
+	public CourseCatalogue (DBManager dataBase) {
+		setCourseList(dataBase.readFromDataBase());
 	}
 	
 	public boolean addCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
@@ -30,10 +30,10 @@ public class CourseCatalogue implements Constants{
 		}
 	}
 
-	private void loadFromDataBase() {
-		DBManager db = new DBManager();
-		setCourseList(db.readFromDataBase());
-	}
+	//private void loadFromDataBase() {
+	//	DBManager db = new DBManager();
+	//	setCourseList(db.readFromDataBase());
+	//}
 	
 	public void createCourseOffering (Course c, int secNum, int secCap) {
 		if (c!= null) {
