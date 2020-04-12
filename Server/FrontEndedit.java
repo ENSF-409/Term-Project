@@ -45,7 +45,7 @@ public class FrontEndedit implements Runnable{
 			String choiceFromServer = socketIn.readLine();
 			if(choiceFromServer != 4 && choiceFromServer != null) sendString("valid");
 			
-			if(choiceFromServer == 3 || choiceFromServer == 5){//if choice 2, 3 or 5 are chosen deserialize Student object
+			if(choiceFromServer == 3 || choiceFromServer == 5 || choiceFromServer == 6){//if choice 2, 3 or 5 are chosen deserialize Student object
 				input = new ObjectInputStream(aSocket.getInputStream());
 				Student theStudent =(Student)input.readObject();
 			}
@@ -67,8 +67,8 @@ public class FrontEndedit implements Runnable{
 				listStudentCourses(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
 				break;
 			case "6":
-				System.out.println("\nGood Bye!");
-				return;
+				searchStudent()
+				break;
 			default:
 				System.out.println("\nInvalid selection. Please try again");
 				break;
@@ -114,6 +114,17 @@ public class FrontEndedit implements Runnable{
 	}
 
 	
+	private void searchStudent(){
+		int checker = 0;
+		for(Student s: regApp.getDataBase().studentList){// Using the database field of regApp to search for student
+			if(theStudent.equals(s)){
+				sendString("valid");
+				checker++;
+				break;
+			}
+		}
+		if(checker == 0) sendString("invalid");
+	}
 	
 	public void sendString(String toSend) {
 		socketOut.println(toSend);
