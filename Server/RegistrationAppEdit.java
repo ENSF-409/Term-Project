@@ -1,9 +1,11 @@
 public class RegistrationApp {
 
 	private CourseCatalogue catCourse;
+	private DBManager dataBase;
 	
 	public RegistrationApp() {
-		catCourse = new CourseCatalogue();
+		dataBase = new DBManager(); // Placed here by Dunsin
+		catCourse = new CourseCatalogue(dataBase); // Placed dataBase here by Dunsin
 	}
 	
 	public String searchCatCourses(String name, int num) { //Dunsin changed return type from void to String
@@ -31,5 +33,9 @@ public class RegistrationApp {
 
 	public String listAllCourses() {
 		return catCourse.listAllCourses();
+	}
+	
+	public void addStudent(Student theStudent) {
+		dataBase.addStudent(theStudent);
 	}
 }
