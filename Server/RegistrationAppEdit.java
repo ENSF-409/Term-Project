@@ -35,6 +35,10 @@ public class RegistrationApp {
 		return catCourse.listAllCourses();
 	}
 	
+	public DBManager getDataBase(){
+		return dataBase;
+	}
+	
 	public void addStudent(Student theStudent) {
 		dataBase.addStudent(theStudent);
 	}
