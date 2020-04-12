@@ -12,9 +12,9 @@ public class DBManager implements Constants {
 		studentList = new ArrayList<Student>();
 	}
 	
-	public addCourse(Course theCourse){ // add new courses to the database
-		courseList.add(theCourse)
-	}
+	//public addCourse(Course theCourse){ // add new courses to the database
+	//	courseList.add(theCourse)
+	//}
 	
 	public addStudent(Student theStudent){ // Add new students to the database
 		studentList.add(theStudent)
