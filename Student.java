@@ -67,7 +67,7 @@ public class Student implements Constants, Serializable{
   
         /* Check if o is an instance of Complex or not 
           "null instanceof [type]" also returns false */
-        	if (!(o instanceof Complex)) { 
+        	if (!(o instanceof Student)) { 
            		 return false; 
        		 } 
 
