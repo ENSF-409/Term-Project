@@ -8,6 +8,10 @@ public class FrontEndedit implements Runnable{
 	private Socket aSocket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
+	private ObjectInputStream input;
+	
+	
+     
 	
 	
 	public FrontEndedit(Socket s) {
@@ -40,6 +44,11 @@ public class FrontEndedit implements Runnable{
 			
 			String choiceFromServer = socketIn.readLine();
 			if(choiceFromServer != 4 && choiceFromServer != null) sendString("valid");
+			
+			if(choiceFromServer == 3 || choiceFromServer == 5){//if choice 2, 3 or 5 are chosen deserialize Student object
+				input = new ObjectInputStream(aSocket.getInputStream());
+				Student theStudent =(Student)input.readObject();
+			}
 			
 			switch (choiceFromServer) {
 			case "1":
@@ -78,12 +87,13 @@ public class FrontEndedit implements Runnable{
 	}
 
 	private void removeStudentCourse() {
-		String studentName = getStudentName();
-		int studentId = getStudentId();
-		String courseName = getCourseName();
-		int courseNum = getCourseNum();
-		int secNum = getSecNum();
-		regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum);
+		String removeCourseParameters[] = socketIn.readLine().split(" ");
+		String studentName = addCourseParameters[0];
+		int studentId = Integer.parseInt(addCourseParameters[1]);
+		String courseName = addCourseParameters[2];
+		int courseNum = Integer.parseInt(addCourseParameters[3]);
+		int secNum = Integer.parseInt(addCourseParameters[4]);
+		sendString(regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum));
 	}
 
 	private void addCourse() {
