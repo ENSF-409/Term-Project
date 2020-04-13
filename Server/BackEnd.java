@@ -52,10 +52,10 @@ public class BackEnd implements Runnable{
 			
 			switch (choiceFromServer) {
 			case "1":
-				searchCatCourses();
+				searchCatCourses(); // I commented out st += listAllStudents(); in toString() of CourseOffering.java
 				break;
 			case "2":
-				addCourse(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
+				addCourse(); // This creates a new Student object with the parameters passed in through the socket
 				break;
 			case "3":
 				removeStudentCourse(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
@@ -84,6 +84,17 @@ public class BackEnd implements Runnable{
 		sendString(regApp.searchCatCourses(name, num));	
 	}
 	
+	//case "2"
+	private void addCourse() {
+		String addCourseParameters[] = socketIn.readLine().split(" ");
+		String studentName = addCourseParameters[0];
+		int studentId = Integer.parseInt(addCourseParameters[1]);
+		String courseName = addCourseParameters[2];
+		int courseNum = Integer.parseInt(addCourseParameters[3]);
+		int secNum = Integer.parseInt(addCourseParameters[4]);
+		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));
+	}
+	
 	
 	private void listStudentCourses() {
 		String name = getStudentName();
@@ -104,17 +115,6 @@ public class BackEnd implements Runnable{
 		int secNum = Integer.parseInt(addCourseParameters[4]);
 		sendString(regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum));
 	}
-
-	private void addCourse() {
-		String addCourseParameters[] = socketIn.readLine().split(" ");
-		String studentName = addCourseParameters[0];
-		int studentId = Integer.parseInt(addCourseParameters[1]);
-		String courseName = addCourseParameters[2];
-		int courseNum = Integer.parseInt(addCourseParameters[3]);
-		int secNum = Integer.parseInt(addCourseParameters[4]);
-		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));
-	}
-
 	
 	private void searchStudent(){
 		int checker = 0;
