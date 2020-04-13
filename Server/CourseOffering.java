@@ -38,13 +38,20 @@ public class CourseOffering {
 		this.theCourse = theCourse;
 	}
 	
-	public boolean addCourse(String studentName, int studentId) {
+	public boolean addCourse(String studentName, int studentId) {//CONSIDER CHANGING RETURN TYPE TO Student
 		Registration newReg = new Registration();
-		newReg.completeRegistration((new Student(studentName, studentId)), this);
+		
+		//NOTICE ME NOTICE ME NOTICE ME
+		//NOTICE ME NOTICE ME NOTICE ME
+		//NOTICE ME NOTICE ME NOTICE ME
+		//Student theStudent = new Student(studentName, studentId);
+		//newReg.completeRegistration(theStudent, this); //NEW
+		newReg.completeRegistration((new Student(studentName, studentId)), this);// OLD
+		
 		if (newReg.validateStudent(studentName, studentId))
-			return true;
+			return true;// CHANGE TO theStudent
 		else
-			return false;
+			return false;//CHANGE TO NULL
 	}
 
 	public void addRegistration(Registration registration) {
