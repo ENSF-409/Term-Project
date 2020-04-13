@@ -98,7 +98,10 @@ public class BackEnd implements Runnable{
 		int courseNum = Integer.parseInt(addCourseParameters[3]);
 		int secNum = Integer.parseInt(addCourseParameters[4]);
 		//Student sendStudent = regApp.addCourse(studentName, studentId, courseName, courseNum, secNum);
-		//objectOutputStream.writeUnshared(sendStudent);
+		//objectOutputStream.writeUnshared(sendStudent); //WHICH MEANS Niyousha may have to 
+		//CHANGE LINE 50 OF ComController to return (Student)objectInputStream.readUnshared();
+		//CHANGE LINE 173 OF GUIController to return type of Student
+		//CHANGE LINE 123 OF GUIController to type of Student
 		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));//Remove, see comment on line 69
 	}
 	
