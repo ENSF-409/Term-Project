@@ -89,7 +89,7 @@ public class CourseOffering {
 	public String toString () {
 		String st = "\n";
 		st += "Section Number: " + getSecNum() + ", Section Capacity: "+ getSecCap() +"\n";
-		st += listAllStudents();
+		//st += listAllStudents(); I commented this out because no students have been added yet
 		return st;
 	}
 
