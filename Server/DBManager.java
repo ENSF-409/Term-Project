@@ -23,6 +23,22 @@ public class DBManager implements Constants {
 		}
 		if(checker == 0) studentList.add(theStudent);
 	}
+	
+	public String sendStudentList(){
+		String s = "All the students currently in the data base are:\n";
+		for(Student student : studentList){
+			s += student.toString() + "\n";
+		}
+		return s;
+	}
+	
+	public String sendCourseList(){
+		String s = "All the courses currently in the data base are:\n";
+		for(Course course : courseList){
+			s += course.toString() + "\n";
+		}
+		return s;
+	}
 		
 
 	public ArrayList readFromDataBase() {
