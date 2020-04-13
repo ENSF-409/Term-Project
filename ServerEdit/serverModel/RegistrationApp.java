@@ -22,7 +22,7 @@ public class RegistrationApp {
 		Course theCourse = dataBase.findCourse(courseName, courseNum);
 		
 		if (theStudent != null && theCourse != null && this.catCourse.addCourse(theStudent, theCourse, secNum)) {
-			return "Course added successfully!\n";
+			return "valid";
 		}
 
 		return "Student course could not be added. Please try again.\n"; //REMOVE
