@@ -10,6 +10,7 @@ public class RegistrationApp {
 	
 	public String searchCatCourses(String name, int num) { //Dunsin changed return type from void to String
 		Course c = this.catCourse.searchCat(name, num);
+		if(c == null) return "Course does not exist!";
 		return c.output();
 	}
 
