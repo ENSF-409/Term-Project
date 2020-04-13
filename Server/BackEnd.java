@@ -72,7 +72,7 @@ public class BackEnd implements Runnable{
 						      // A solution to this is, using the info from the loginFrame.getName() ...etc., to initially 
 						      // have theStudent to be only constructed on the server side and then serialized and sent to the client side
 			case "6":
-				searchStudent()
+				searchStudent();
 				break;
 			default:
 				System.out.println("\nInvalid selection. Please try again");
@@ -83,7 +83,7 @@ public class BackEnd implements Runnable{
 	
 	//case "1"
 	private void searchCatCourses() {
-		String searchCatCoursesParameters[] = socketIn.readLine().split(" ");
+		String searchCatCoursesParameters[] = readFromSocket();
 		String name = searchCatCoursesParameters[0];
 		int num = Integer.parseInt(searchCatCoursesParameters[1]);
 		sendString(regApp.searchCatCourses(name, num));	
@@ -91,7 +91,7 @@ public class BackEnd implements Runnable{
 	
 	//case "2"
 	private void addCourse() {
-		String addCourseParameters[] = socketIn.readLine().split(" ");
+		String addCourseParameters[] = readFromSocket();
 		String studentName = addCourseParameters[0];
 		int studentId = Integer.parseInt(addCourseParameters[1]);
 		String courseName = addCourseParameters[2];
@@ -107,12 +107,12 @@ public class BackEnd implements Runnable{
 	
 	//case "3"
 	private void removeStudentCourse() {
-		String removeCourseParameters[] = socketIn.readLine().split(" ");
-		String studentName = addCourseParameters[0];
-		int studentId = Integer.parseInt(addCourseParameters[1]);
-		String courseName = addCourseParameters[2];
-		int courseNum = Integer.parseInt(addCourseParameters[3]);
-		int secNum = Integer.parseInt(addCourseParameters[4]);
+		String removeCourseParameters[] = readFromSocket();
+		String studentName = removeCourseParameters[0];
+		int studentId = Integer.parseInt(removeCourseParameters[1]);
+		String courseName = removeCourseParameters[2];
+		int courseNum = Integer.parseInt(removeCourseParameters[3]);
+		int secNum = Integer.parseInt(removeCourseParameters[4]);
 		sendString(regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum));
 	}
 	
@@ -145,6 +145,16 @@ public class BackEnd implements Runnable{
 		socketOut.println(toSend);
 		socketOut.flush();
 	}
+	
+	private String readFromSocket(){
+		String message = " ";
+		try{
+			message = socketIn.readLine().split(" ");
+		}catch(Exception e){
+		}
+		return message;
+	}
+		
 	
 	@Override
 	public void run() {
