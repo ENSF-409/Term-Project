@@ -8,19 +8,20 @@ public class BackEnd implements Runnable{
 	private Socket aSocket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
-	private ObjectInputStream input;
+	private ObjectInputStream objectInputStream;
 	
 	
      
 	
 	
 	public BackEnd(Socket s) {
-		regApp = new RegistrationApp();
+		regApp = new RegistrationApp(); //if you follow the trail, loads from database for each new instance of backend
 		aSocket = s;
 		
 		try {
 			socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
 			socketOut = new PrintWriter(aSocket.getOutputStream());
+			objectInputStream = new ObjectInputStream(aSocket.getInputStream());
 		}catch(IOException e) {
 			System.out.println(e);
 		}
@@ -43,11 +44,10 @@ public class BackEnd implements Runnable{
 		while (true) {
 			
 			String choiceFromServer = socketIn.readLine();
-			if(choiceFromServer != 4 && choiceFromServer != null) sendString("valid");
+			if(choiceFromServer.compareTo( "4" ) != 0 && choiceFromServer != null) sendString("valid");
 			
-			if(choiceFromServer == 3 || choiceFromServer == 5 || choiceFromServer == 6){//if choice 2, 3 or 5 are chosen deserialize Student object
-				input = new ObjectInputStream(aSocket.getInputStream());
-				Student theStudent =(Student)input.readObject();
+			if(choiceFromServer.compareTo( "5" ) == 0 || choiceFromServer.compareTo( "6" ) == 0 ){//if choice 5 or 6 are chosen deserialize Student object
+				Student theStudent =(Student)objectInputStream.readUnshared();
 			}
 			
 			switch (choiceFromServer) {
@@ -75,6 +75,15 @@ public class BackEnd implements Runnable{
 			}
 		}
 	}
+	
+	//case "1"
+	private void searchCatCourses() {
+		String searchCatCoursesParameters[] = socketIn.readLine().split(" ");
+		String name = searchCatCoursesParameters[0];
+		int num = Integer.parseInt(searchCatCoursesParameters[1]);
+		sendString(regApp.searchCatCourses(name, num));	
+	}
+	
 	
 	private void listStudentCourses() {
 		String name = getStudentName();
@@ -104,13 +113,6 @@ public class BackEnd implements Runnable{
 		int courseNum = Integer.parseInt(addCourseParameters[3]);
 		int secNum = Integer.parseInt(addCourseParameters[4]);
 		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));
-	}
-
-	private void searchCatCourses() {
-		String searchCatCoursesParameters[] = socketIn.readLine().split(" ");
-		String name = searchCatCoursesParameters[0];
-		int num = Integer.parseInt(searchCatCoursesParameters[1]);
-		sendString(regApp.searchCatCourses(name, num));	
 	}
 
 	
