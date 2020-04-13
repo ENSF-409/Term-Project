@@ -8,9 +8,17 @@ public class Registration {
 		addRegistration ();
 	}
 	
-	private void addRegistration () {
+	private void addRegistration () {// Consider changing this to return type Student
 		theStudent.addRegistration(this);
 		theOffering.addRegistration(this);
+		//
+		//NOTICE ME NOTICE ME NOTICE ME
+		//
+		//
+		// The reason for this is explained in case "5" line 67 of BackEnd.java
+		//
+		//
+		//return theStudent;
 	}
 	
 	public Student getTheStudent() {
