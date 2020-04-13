@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class FrontEndedit implements Runnable{
+public class BackEnd implements Runnable{
 	
 	private RegistrationApp regApp;
 	private Socket aSocket;
@@ -14,7 +14,7 @@ public class FrontEndedit implements Runnable{
      
 	
 	
-	public FrontEndedit(Socket s) {
+	public BackEnd(Socket s) {
 		regApp = new RegistrationAppEdit();
 		aSocket = s;
 		
