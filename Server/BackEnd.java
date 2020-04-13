@@ -9,6 +9,7 @@ public class BackEnd implements Runnable{
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
 	private ObjectInputStream objectInputStream;
+	private ObjectOutputStream objectOutputStream;
 	
 	
      
@@ -22,6 +23,7 @@ public class BackEnd implements Runnable{
 			socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
 			socketOut = new PrintWriter(aSocket.getOutputStream());
 			objectInputStream = new ObjectInputStream(aSocket.getInputStream());
+			objectOutputStream = new ObjectOutputStream(aSocket.getOutputStream());
 		}catch(IOException e) {
 			System.out.println(e);
 		}
@@ -95,7 +97,9 @@ public class BackEnd implements Runnable{
 		String courseName = addCourseParameters[2];
 		int courseNum = Integer.parseInt(addCourseParameters[3]);
 		int secNum = Integer.parseInt(addCourseParameters[4]);
-		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));
+		//Student sendStudent = regApp.addCourse(studentName, studentId, courseName, courseNum, secNum);
+		//objectOutputStream.writeUnshared(sendStudent);
+		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));//Remove, see comment on line 69
 	}
 	
 	//case "3"
