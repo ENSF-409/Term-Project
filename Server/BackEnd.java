@@ -58,7 +58,7 @@ public class BackEnd implements Runnable{
 				addCourse(); // This creates a new Student object with the parameters passed in through the socket
 				break;
 			case "3":
-				removeStudentCourse(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
+				removeStudentCourse(); // Removes courses from previously created Student object from case "2"
 				break;
 			case "4":
 				listCatCourses();
