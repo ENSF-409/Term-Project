@@ -107,16 +107,16 @@ public class BackEnd implements Runnable{
 	}
 	
 	
+	// case "4"
+	private void listCatCourses() {
+		sendString(regApp.listAllCourses());
+	}
+	
 	private void listStudentCourses() {
 		String name = getStudentName();
 		int id = getStudentId();
 		regApp.listStudentCourses(name, id);
 	}
-
-	private void listCatCourses() {
-		sendString(regApp.listAllCourses());
-	}
-
 	
 	
 	private void searchStudent(){
