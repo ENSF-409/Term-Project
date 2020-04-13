@@ -31,4 +31,14 @@ public class ServerCommsController{
 			threadPool.shutdown();
 		}
 	}
+	
+	public static void main(String args[]) {
+		ServerCommsController myServerController = new ServerCommsController(9090);
+		try {
+			myServerController.communicateWithClient();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
