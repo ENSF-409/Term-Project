@@ -51,10 +51,12 @@ public class CourseOffering {
 		offeringRegList.add(registration);
 	}
 	
-	public void listStudentCourses(String name, int id) {
+	public String listStudentCourses(String name, int id) {
+		String s = "";
 		for (Registration i: offeringRegList) {
-			i.listStudentCourses(name, id);
+			s += i.listStudentCourses(name, id);
 		}
+		return s;
 	}
 	
 	public boolean removeStudentCourse(String studentName, int studentId){
