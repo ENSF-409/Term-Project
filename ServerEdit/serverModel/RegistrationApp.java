@@ -38,7 +38,7 @@ public class RegistrationApp {
 		Course theCourse = dataBase.findCourse(courseName, courseNum);
 		
 		if (theStudent != null && theCourse != null && this.catCourse.removeStudentCourse(theStudent, theCourse, secNum))
-			return "Student course removed!\n";
+			return "valid";
 
 		
 		return "Student course could not be removed. Please try again.\n";
