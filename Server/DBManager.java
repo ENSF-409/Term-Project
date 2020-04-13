@@ -41,7 +41,7 @@ public class DBManager implements Constants {
 	}
 		
 
-	public ArrayList readFromDataBase() {
+	public ArrayList<Course> readFromDataBase() {
 		courseList.add(new Course ("ENGG", 233));
 		courseList.add(new Course ("ENSF", 409));
 		courseList.add(new Course ("PHYS", 259));
