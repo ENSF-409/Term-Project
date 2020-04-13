@@ -17,7 +17,11 @@ public class DBManager implements Constants {
 	//}
 	
 	public addStudent(Student theStudent){ // Add new students to the database
-		studentList.add(theStudent)
+		int checker = 0;
+		for(Student s : studentList){
+			if(s.equals(theStudent)) checker++;
+		}
+		if(checker == 0) studentList.add(theStudent);
 	}
 		
 
