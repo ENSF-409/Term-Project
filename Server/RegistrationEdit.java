@@ -29,13 +29,15 @@ public class Registration {
 		this.theOffering = theOffering;
 	}
 
-	public void listStudentCourses(String name, int id) {
+	public String listStudentCourses(String name, int id) {
+		String s = "";
 		if (validateStudent(name, id)) {
-			System.out.print(theOffering.getTheCourse().getCourseName() + " " + theOffering.getTheCourse().getCourseNum());
-			System.out.println(": Section " + theOffering.getSecNum() + "\n");
+			s += theOffering.getTheCourse().getCourseName() + " " + theOffering.getTheCourse().getCourseNum();
+			s += ": Section " + theOffering.getSecNum() + "\n";
 		}
 		else
-			System.out.println("Student does not exist!");
+			s = "Student does not exist!";
+		return s;
 	}
 	
 	public boolean validateStudent(String name, int id) {
