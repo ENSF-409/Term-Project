@@ -66,12 +66,12 @@ public class CourseCatalogue implements Constants{
 		this.courseList = courseList;
 	}
 	
-	public void listStudentCourses(String name, int id) {
-		System.out.println("Student courses are the following: \n");
+	public String listStudentCourses(String name, int id) {
+		String s = "Student courses are the following: \n";
 		for (Course i: courseList) {
-			i.listStudentCourses(name, id);
+			s += i.listStudentCourses(name, id);
 		}
-		
+		return s;
 	}
 	
 	public boolean removeStudentCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
