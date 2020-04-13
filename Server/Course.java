@@ -59,12 +59,14 @@ public class Course {
 				+ this.toString());
 	}	
 	
-	public boolean addCourse(String studentName, int studentId, int secNum) {
-		boolean status = false;
+	public boolean addCourse(String studentName, int studentId, int secNum) { //CONSIDER CHANGING RETURN TYPE TO Student
+		boolean status = false; // consider CHANGING TO NULL AND MAKING IT TYPE Student
 		for (CourseOffering i: offeringList) {
-			if (i.getSecNum() == secNum)
-				if (i.addCourse(studentName, studentId))
-					status = true;
+			if (i.getSecNum() == secNum){
+				//status = i.addCourse(studentName, studentId);
+				if (i.addCourse(studentName, studentId)) //REMOVE
+					status = true; //REMOVE
+			}
 		}
 		return status;
 	}
