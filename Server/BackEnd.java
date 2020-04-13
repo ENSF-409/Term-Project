@@ -95,6 +95,17 @@ public class BackEnd implements Runnable{
 		sendString(regApp.addCourse(studentName, studentId, courseName, courseNum, secNum));
 	}
 	
+	//case "3"
+	private void removeStudentCourse() {
+		String removeCourseParameters[] = socketIn.readLine().split(" ");
+		String studentName = addCourseParameters[0];
+		int studentId = Integer.parseInt(addCourseParameters[1]);
+		String courseName = addCourseParameters[2];
+		int courseNum = Integer.parseInt(addCourseParameters[3]);
+		int secNum = Integer.parseInt(addCourseParameters[4]);
+		sendString(regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum));
+	}
+	
 	
 	private void listStudentCourses() {
 		String name = getStudentName();
@@ -106,15 +117,7 @@ public class BackEnd implements Runnable{
 		sendString(regApp.listAllCourses());
 	}
 
-	private void removeStudentCourse() {
-		String removeCourseParameters[] = socketIn.readLine().split(" ");
-		String studentName = addCourseParameters[0];
-		int studentId = Integer.parseInt(addCourseParameters[1]);
-		String courseName = addCourseParameters[2];
-		int courseNum = Integer.parseInt(addCourseParameters[3]);
-		int secNum = Integer.parseInt(addCourseParameters[4]);
-		sendString(regApp.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum));
-	}
+	
 	
 	private void searchStudent(){
 		int checker = 0;
