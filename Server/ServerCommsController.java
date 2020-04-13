@@ -24,8 +24,8 @@ public class ServerCommsController{
 	public void communicateWithClient() throws IOException{
 		try {
 			while(true) {
-				BackEnd theStudentBackEnd = new BackEnd(serverSocket.accept()); //Create new BackEnd instance for every new client
-				pool.execute(FrontEndedit);
+				BackEnd theBackEnd = new BackEnd(serverSocket.accept()); //Create new BackEnd instance for every new client
+				pool.execute(BackEnd);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
