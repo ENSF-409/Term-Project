@@ -14,11 +14,12 @@ public class RegistrationApp {
 		return c.output();
 	}
 
-	public String addCourse(String studentName, int studentNum, String courseName, int courseNum, int secNum) {
-		if (this.catCourse.addCourse(studentName, studentNum, courseName, courseNum, secNum))
-			return "Course added successfully!\n";
-		else
-			return "Student course could not be added. Please try again.\n";
+	public String addCourse(String studentName, int studentNum, String courseName, int courseNum, int secNum) {// //CONSIDER CHANGING RETURN TYPE TO Student
+		//return this.catCourse.addCourse(studentName, studentNum, courseName, courseNum, secNum);
+		if (this.catCourse.addCourse(studentName, studentNum, courseName, courseNum, secNum))//REMOVE
+			return "Course added successfully!\n"; //REMOVE
+		else //REMOVE
+			return "Student course could not be added. Please try again.\n"; //REMOVE
 	}
 
 	public String listStudentCourses(String name, int id) {
