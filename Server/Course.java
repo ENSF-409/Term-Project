@@ -54,8 +54,8 @@ public class Course {
 			return offeringList.get(i);
 	}
 	
-	public void output() {
-		System.out.println("The course information is as follows:"
+	public String output() {
+		return "The course information is as follows:"
 				+ this.toString());
 	}	
 	
