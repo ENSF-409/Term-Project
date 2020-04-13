@@ -69,9 +69,10 @@ public class Course {
 		return status;
 	}
 	
-	public void listStudentCourses(String name, int id) {
+	public String listStudentCourses(String name, int id) {
+		String s = "";
 		for(CourseOffering i: offeringList) {
-			i.listStudentCourses(name, id);
+			s += i.listStudentCourses(name, id);
 		}
 	}
 	
