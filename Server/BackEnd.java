@@ -61,7 +61,7 @@ public class BackEnd implements Runnable{
 				removeStudentCourse(); // Removes courses from previously created Student object from case "2"
 				break;
 			case "4":
-				listCatCourses();
+				listCatCourses(); // Lists all courses, doesn't list students in courses see comment in case "1"
 				break;
 			case "5":
 				listStudentCourses(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
