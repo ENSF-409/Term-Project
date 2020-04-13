@@ -8,14 +8,15 @@ public class CourseCatalogue implements Constants{
 		setCourseList(dataBase.readFromDataBase());
 	}
 	
-	public boolean addCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
-		boolean status = false;
+	public boolean addCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {//CONSIDER CHANGING RETURN TYPE TO Student
+		boolean status = false;//consider changing to type Student
 		Course c = searchCat(courseName, courseNum);
 		if (c != null && validateSecNum(secNum)) {
 			for (Course i: courseList) {
 				if (i.equals(c))
-					if (i.addCourse(studentName, studentId, secNum))
-						status = true;
+					// status = i.addCourse(studentName, studentId, secNum);
+					if (i.addCourse(studentName, studentId, secNum))//REMOVE
+						status = true; //REMOVE
 			}
 		}
 		return status;
