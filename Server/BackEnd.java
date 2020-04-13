@@ -64,8 +64,11 @@ public class BackEnd implements Runnable{
 				listCatCourses(); // Lists all courses, doesn't list students in courses see comment in case "1"
 				break;
 			case "5":
-				listStudentCourses(); // Talk to Niyousha to finds out how she will send the serialized Student via socket
-				break;
+				listStudentCourses(); // Talk to Niyousha: theStudent created newly in line 58 of GUIController is different
+				break;		      // from the theStudent created by case "2", even if they have the same name, adding a course
+						      // to one of them does not add a course to the other, same goes for removing a course
+						      // A solution to this is, using the info from the loginFrame.getName() ...etc., to initially 
+						      // have theStudent to be only constructed on the server side and then serialized and sent to the client side
 			case "6":
 				searchStudent()
 				break;
