@@ -25,7 +25,7 @@ public class RegistrationApp {
 		return this.catCourse.listStudentCourses(name, id);
 	}
 
-	public void removeStudentCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
+	public String removeStudentCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
 		if (this.catCourse.removeStudentCourse(studentName, studentId, courseName, courseNum, secNum))
 			return "Student course removed!\n";
 		else
