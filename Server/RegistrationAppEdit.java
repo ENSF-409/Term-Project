@@ -20,8 +20,8 @@ public class RegistrationApp {
 			return "Student course could not be added. Please try again.\n";
 	}
 
-	public void listStudentCourses(String name, int id) {
-		this.catCourse.listStudentCourses(name, id);
+	public String listStudentCourses(String name, int id) {
+		return this.catCourse.listStudentCourses(name, id);
 	}
 
 	public void removeStudentCourse(String studentName, int studentId, String courseName, int courseNum, int secNum) {
