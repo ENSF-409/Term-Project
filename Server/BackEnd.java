@@ -15,7 +15,7 @@ public class BackEnd implements Runnable{
 	
 	
 	public BackEnd(Socket s) {
-		regApp = new RegistrationAppEdit();
+		regApp = new RegistrationApp();
 		aSocket = s;
 		
 		try {
