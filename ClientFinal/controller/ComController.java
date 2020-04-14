@@ -5,7 +5,7 @@ import model.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
+//import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.NoSuchElementException;
@@ -18,13 +18,13 @@ public class ComController {
 	private Socket socket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
-	private ObjectOutputStream objectOutputStream;
+	//private ObjectOutputStream objectOutputStream;
 
 	public ComController() {
 		try {
 			socket = new Socket("localhost", 9090);
 			socketIn = new BufferedReader(new InputStreamReader(socket.getInputStream())); // assuming client only receives string messages from server over socket
-			objectOutputStream = new ObjectOutputStream (socket.getOutputStream()); // client sends serialized student object to server
+			//objectOutputStream = new ObjectOutputStream (socket.getOutputStream()); // client sends serialized student object to server
 			socketOut = new PrintWriter (socket.getOutputStream(), true); // client sends strings to server
 		} catch (IOException e) { 
 			e.printStackTrace();
