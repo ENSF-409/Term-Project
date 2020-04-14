@@ -5,8 +5,8 @@ import model.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -16,7 +16,7 @@ public class BackEnd implements Runnable{
 	private Socket aSocket;
 	private PrintWriter socketOut;
 	private BufferedReader socketIn;
-	private ObjectInputStream objectInputStream;
+	//private ObjectInputStream objectInputStream;
 	//private ObjectOutputStream objectOutputStream;
 	
 	public BackEnd(Socket s) {
@@ -26,7 +26,7 @@ public class BackEnd implements Runnable{
 		try {
 			socketIn = new BufferedReader(new InputStreamReader(aSocket.getInputStream()));
 			socketOut = new PrintWriter(aSocket.getOutputStream());
-			objectInputStream = new ObjectInputStream(aSocket.getInputStream());
+			//objectInputStream = new ObjectInputStream(aSocket.getInputStream());
 			//objectOutputStream = new ObjectOutputStream(aSocket.getOutputStream()); 
 		}catch(IOException e) {
 			System.out.println(e);
