@@ -88,7 +88,7 @@ public class BackEnd implements Runnable{
 		String searchCatCoursesParameters[] = str.split(" ");
 		String name = searchCatCoursesParameters[0];
 		int num = Integer.parseInt(searchCatCoursesParameters[1]);
-		sendString(regApp.searchCatCourses(name, num));	
+		sendString(regApp.searchCatCourses(name, num) + "\0");	
 	}
 	
 	//case "2"
@@ -117,7 +117,7 @@ public class BackEnd implements Runnable{
 	
 	// case "4"
 	private void listCatCourses() {
-		sendString(regApp.listAllCourses());
+		sendString(regApp.listAllCourses() + "\0");
 	}
 	
 	// case "5"
@@ -130,7 +130,7 @@ public class BackEnd implements Runnable{
 	private void listStudentCourses() {
 		String str = readFromSocket();
 		String student [] = str.split(" ");
-		sendString(regApp.listStudentCourses(student[0], Integer.parseInt(student[1])));
+		sendString(regApp.listStudentCourses(student[0], Integer.parseInt(student[1])) + "\0");
 	}
 	
 	
