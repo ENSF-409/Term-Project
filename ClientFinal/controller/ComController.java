@@ -63,7 +63,7 @@ public class ComController {
 	
 	public String getCourseCatalogue() {
 		socketOut.println("4"); // switch case 4: View all courses (i.e. get course catalog from server)
-		String courses = receiveMessageFromServer(); // receive multiple message from server
+		String courses = receiveMultipleLineMessageFromServer(); // receive multiple message from server
 		if (!courses.isBlank())  // check if command was received by server
 			return courses;
 		else
@@ -113,6 +113,24 @@ public class ComController {
 		return messageFromServer;
 	}
 
+	// Receives multiline String from server through socket
+	public String receiveMultipleLineMessageFromServer() {
+		String line;
+		String messageFromServer = " ";	
+		try {
+			while((line = socketIn.readLine()) != null) {
+				messageFromServer += line + "\n";
+				if(line.contains("\0")) {
+					break;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return messageFromServer;
+	}
+	
 	private boolean verifyReceivedCommand(String recieved) {
 		if (recieved.equalsIgnoreCase("valid"))
 			return true;
