@@ -35,10 +35,23 @@ public class BackEnd implements Runnable{
 
 	public void menu() {
 		
-		Student theStudent = null;
+		//Student theStudent = null;
+		String choiceFromServer = "";
+		int breaker = 0;
 		
-		while (true) {
-			String choiceFromServer = readFromSocket();
+		while (breaker == 0) {
+			try{
+				choiceFromServer = readFromSocket();
+			}catch(Exception e){
+				try{
+					socketIn.close();
+					socketOut.close();
+					aSocket.close();
+				}catch(Exception e){
+				}
+			}
+			
+			
 			if(choiceFromServer.compareTo( "4" ) != 0 && choiceFromServer != null) sendString("valid");
 			
 //			if(choiceFromServer.compareTo( "5" ) == 0 || choiceFromServer.compareTo( "6" ) == 0 ){//if choice 5 or 6 are chosen deserialize Student object
@@ -77,6 +90,7 @@ public class BackEnd implements Runnable{
 				break;
 			default:
 				System.out.println("\nInvalid selection. Please try again");
+				breaker = -1;
 				break;
 			}
 		}
@@ -171,7 +185,6 @@ public class BackEnd implements Runnable{
 		try {
 			message = socketIn.readLine();
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return message;
 	}
