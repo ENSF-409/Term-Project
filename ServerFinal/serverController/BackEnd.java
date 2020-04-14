@@ -47,7 +47,7 @@ public class BackEnd implements Runnable{
 					socketIn.close();
 					socketOut.close();
 					aSocket.close();
-				}catch(Exception e){
+				}catch(Exception e1){
 				}
 			}
 			
