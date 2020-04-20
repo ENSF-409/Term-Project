@@ -1,4 +1,4 @@
-ENSF409 Final Project Milestone 2
+ENSF409 Final Project Milestone 3
 Niyousha Raeesinejad
 Dunsin Shitta-Bey
 
@@ -24,4 +24,3 @@ To run this student course registration program please go through the following 
 4] Follow the instructions on the GUI
 
 5] Before running ServerCommsController again, please comment out the init() method in the second line inside the constructor of   	    DBController() because the mySQL tables would have been created at the first run of ServerCommsController
-
